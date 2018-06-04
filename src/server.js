@@ -2,7 +2,8 @@
 
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3001;
+
+require('dotenv').config();
 
 const routes = require('./api/routes');
 
@@ -14,8 +15,8 @@ app.use(function(req, res, next) {
 
 routes(app);
 
-app.listen(port);
+app.listen(process.env.API_PORT);
 
-console.log('API server started on: ' + port);
+console.log(process.env.API_ENVIRONMENT + ' API server started on port ' + process.env.API_PORT);
 
 module.exports = app;
